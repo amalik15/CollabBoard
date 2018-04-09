@@ -11,6 +11,7 @@ University of Illinois at Chicago.
 -->
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 
 <head>
   <meta charset="utf-8">
@@ -151,3 +152,157 @@ University of Illinois at Chicago.
 </body>
 
 </html>
+=======
+    <head>
+        <meta charset="utf-8">
+        <title>CollabBoard</title>
+        <link rel="stylesheet" href="style.css">
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    </head>
+    <style>
+      
+      li > ul{display:none;}
+      .show {display:block;}
+      .sub-nav ul {
+        background: #efefef; 
+        background: linear-gradient(top, #efefef 0%, #bbbbbb 100%);  
+        background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%); 
+        background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%); 
+        box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+        padding: 0 20px;
+        border-radius: 0px;  
+        list-style: none;
+        position: relative;
+      }
+      .sub-nav ul:after {content: ""; clear: both; display: block;}
+      li {float: left;}
+      .sub-nav ul li:hover {
+        background: #4b545f;
+        background: linear-gradient(top, #4f5964 0%, #5f6975 40%);
+        background: -moz-linear-gradient(top, #4f5964 0%, #5f6975 40%);
+        background: -webkit-linear-gradient(top, #4f5964 0%,#5f6975 40%);
+      }
+      .sub-nav ul li:hover a {color: #fff;}
+      .sub-nav ul li a {
+        display: block; 
+        padding: 20px 40px;
+        color: #757575; 
+        text-decoration: none;
+      }
+      .sub-nav ul ul {
+        background: #5f6975; 
+        border-radius: 0px; 
+        padding: 0;
+        position: absolute; 
+        top: 100%;
+      }
+      .sub-nav ul ul li {
+        float: none; 
+        border-top: 1px solid #6b727c;
+        border-bottom: 1px solid #575f6a;
+        position: relative;
+      }
+      .sub-nav ul ul li a {padding: 15px 40px; color: #fff;}
+      .sub-nav ul ul li a:hover {background: #4b545f;}
+
+    </style>
+    <body>
+         <!-- START: nav -->
+    <div class="sub-nav">
+      <div>
+
+        <ul>
+          
+
+          <li class="dropdown"><a href="#">File</a>
+            <ul class="is-open">
+              <li><a href="#">New</a></li>
+              <li><a href="#">Import</a></li>
+              <li><a href="#">Export</a></li>
+              <li><a href="#">Print</a></li>
+              <li><a href="#">Share</a></li>
+              <li><a href="#">Exit</a></li>
+            </ul>
+          </li>
+
+
+          <li class="dropdown"><a>Edit</a>
+            <ul class="is-open">
+              <li><a href="#">Undo</a></li>
+              <li><a href="#">Redo</a></li>
+              <li><a href="#">Cut</a></li>
+              <li><a href="#">Copy</a></li>
+              <li><a href="#">Paste</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown"><a>View</a>
+            <ul class="is-open">
+              <li><a href="#">Layers</a></li>
+              <li><a href="#">Collaborators</a></li>
+             
+            </ul>
+          </li>
+          
+          <li class="dropdown"><a>Tools</a>
+            <ul class="is-open">
+              <li><a href="#">Pen</a></li>
+              <li><a href="#">Text</a></li>
+              <li><a href="#">Color Wheet</a></li>
+              <li><a href="#">Import Image</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown"><a>Help</a>
+            <ul class="is-open">
+              <li><a href="#">Resources</a></li>
+              <li><a href="#">CollabBoard</a></li>
+      
+            </ul>
+          </li>
+         
+        </ul>
+
+      </div>
+    </div>
+    <!-- END: nav -->
+    </body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+  // toggle drop down
+  $(document).ready(function(){
+    $("li:has(ul)").click(function(){
+      if ($(this).find(".is-open").is(":visible")) {
+        $(".is-open").hide();
+      } else {
+        $(".is-open").hide();
+        $(this).find(".is-open").toggle();
+      }
+    });
+  });
+
+
+  // close menu when clicked outside of drop down menu
+  $(document).on("click", function(event){
+    var $triggerOn = $(".dropdown");
+    if($triggerOn !== event.target && !$triggerOn.has(event.target).length){
+      $(".is-open").hide();
+    }            
+  });  
+  
+  
+
+</script>
+>>>>>>> menuBar
