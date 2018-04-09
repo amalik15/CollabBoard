@@ -20,6 +20,9 @@ University of Illinois at Chicago.
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src="js/menu.js"></script>
+
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -88,31 +91,3 @@ University of Illinois at Chicago.
     <!-- END: nav -->
     </body>
 </html>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-
-  // toggle drop down
-  $(document).ready(function(){
-    $("li:has(ul)").click(function(){
-      if ($(this).find(".is-open").is(":visible")) {
-        $(".is-open").hide();
-      } else {
-        $(".is-open").hide();
-        $(this).find(".is-open").toggle();
-      }
-    });
-  });
-
-
-  // close menu when clicked outside of drop down menu
-  $(document).on("click", function(event){
-    var $triggerOn = $(".dropdown");
-    if($triggerOn !== event.target && !$triggerOn.has(event.target).length){
-      $(".is-open").hide();
-    }            
-  });  
-  
-  
-
-</script>
