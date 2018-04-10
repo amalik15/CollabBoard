@@ -33,7 +33,7 @@ University of Illinois at Chicago.
 <body>
   <!-- START: nav -->
   <div class="sub-nav">
-    <div class="container">
+    <div>
 
       <ul>
 
@@ -146,8 +146,33 @@ University of Illinois at Chicago.
     <button id='-B' type="button" onclick=minus()>-</button>
     <button id='clearB' type="button" onclick=clearCanvas()>clear</button>
   </div>
-  <canvas id="drawingCanvas" width="490" height="220" style="border:1px solid #000000;"></canvas>
+  <canvas id="drawingCanvas" width="490" height="220" style="border:1px solid #000000;" style="position:absolute;"></canvas>
+  
+<!--  List Box Code-->
+   
+<select class="sortItems" id="items" size="15" multiple="" Property="Canvas.Top" style="drawingCanvas.Top" >
+    <option value="1">layer1</option>
+    <option value="2">layer2</option>
+    <option value="3">layer3</option>
+    <option value="4">layer4</option>
+    <option value="5">layer5</option>
+    <option value="6">layer6</option>
+    
+</select>
+<br>
+<button id="button1" onclick="boxMove('items','up');">Move Up</button>
+
+<button id="button2" onclick="boxMove('items','down');">Move Down</button>
+
+
+
+
+
+
   <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript" src="js/list_box.js"></script>
+ 
+  
 </body>
 
 </html>
