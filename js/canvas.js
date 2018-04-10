@@ -24,6 +24,8 @@ var layerNum = 0;
 var layerField = document.getElementById("canvasLayerNumber");
 layerField.value = 0;
 
+showLayer();
+
 //mouse events
 /*
 baseCanvas.addEventListener('mousemove', draw);
@@ -84,6 +86,20 @@ function layerNumber() {
     layerNum = num;
     ctx = canvasList[layerNum].getContext('2d');
     lineTextField.value = ctx.lineWidth;
+    showLayer();
+}
+
+function showLayer() {
+    var div = document.getElementById('canvasIndicator');
+    div.innerHTML = "";
+    for(var i = 0; i < canvasList.length; i++)
+    {
+        if(i == layerField.value)
+        {
+            div.innerHTML += "*";
+        }
+        div.innerHTML += i.toString() + " ";
+    }
 }
 
 function addLayer() {
@@ -101,6 +117,7 @@ function addLayer() {
     canvasContainer.appendChild(newCanvas);
     canvasList = canvasContainer.getElementsByClassName('canvas');
     addListener(canvasList[canvasList.length - 1]);
+    showLayer(); 
 }
 //function to draw on canvas
 function draw(e) {
