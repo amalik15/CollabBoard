@@ -35,10 +35,21 @@ span {
   box-sizing: border-box;
 }
 
+div{
+  border: thin black;
+}
+
 body {
   background: url("http://shurl.esy.es/y") no-repeat fixed center;
   background-size: cover;
 }
+
+.rw {
+  width: :100%;
+  height: 50%
+}
+
+
 
 .fa-2x {
   font-size: 1.5em;
@@ -606,12 +617,13 @@ body {
     padding: 5px 2px 5px 0 !important;
     font-size: 1.8em !important;
   }
+
 }
 
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div >
+<div class="rw">
   <div class="row app-one">
     <div class="col-sm-4 side">
       <div class="side-one">
@@ -772,11 +784,85 @@ body {
           
           </div>
         </div>
+      </div>    
+  </div>
+</div>
+
+
+
+
+<div >
+  <div class="row rw">
+    <div class="col-sm-4 side">
+      <div class = "side-one">
+        <div class="row heading"> 
+        <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-7 heading-name">
+          <a class="heading-name-meta">John Doe
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+          <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
       </div>
 
-      
+        <div class="row message" id="conversation">
+        <div class="row message-previous">
+          <div class="col-sm-12 previous">
+            <a onclick="previous(this)" id="ankitjain28" name="20">
+            Show Previous Message!
+            </a>
+          </div>
+        </div>
 
-    
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-receiver">
+            <div class="receiver">
+              <div class="message-text">
+               Hi, what are you doing?!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+              <div class="message-text">
+                I am doing nothing man!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reply">
+        <div class="col-sm-1 col-xs-1 reply-emojis">
+          <i class="fa fa-smile-o fa-2x"></i>
+        </div>
+        <div class="col-sm-9 col-xs-9 reply-main">
+          <textarea class="form-control" rows="1" id="comment"></textarea>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-recording">
+          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-send">
+          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+     </div>
+    </div>
   </div>
 </div>
 
