@@ -37,7 +37,6 @@ University of Illinois at Chicago.
 
       <ul>
 
-
         <li class="dropdown">
           <a href="#">File</a>
           <ul class="is-open">
@@ -145,8 +144,12 @@ University of Illinois at Chicago.
     <button id='+B' type="button" onclick=plus()>+</button>
     <button id='-B' type="button" onclick=minus()>-</button>
     <button id='clearB' type="button" onclick=clearCanvas()>clear</button>
+    <input id='canvasLayerNumber' type="text" size="1" onchange=layerNumber()>
+    <button id='addLayer' type="button" onclick=addLayer()>AddLayer</button>
   </div>
-  <canvas id="drawingCanvas" width="490" height="220" style="border:1px solid #000000;"></canvas>
+  <div id="canvasList">
+    <canvas class="canvas" id="baseCanvas" width="490" height="220" style="border:1px solid #000000; position:absolute; z-index: 0;"></canvas>
+  </div>
   <script type="text/javascript" src="js/canvas.js"></script>
 </body>
 

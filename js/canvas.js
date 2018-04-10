@@ -1,21 +1,107 @@
 //set up the canvas
-var canvas = document.querySelector('#drawingCanvas');
-var ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+var canvasContainer = document.querySelector('#canvasList');
+var canvasList = canvasContainer.getElementsByClassName('canvas');
+//var baseCanvas = document.querySelector('#baseCanvas');
+var baseCanvas = canvasList[0];
+baseCanvas.width = window.innerWidth;
+baseCanvas.height = window.innerHeight;
+
+var ctx = baseCanvas.getContext('2d');
 ctx.strokeStyle = '#000000';
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
 
 //set pen length
-var lineWidth = 1;
-ctx.lineWidth = lineWidth;
+ctx.lineWidth = 1;
 
 //temp varables
 var isDrawing = false;
 var lastX = 0;
 var lastY = 0;
 
+var layerNum = 0;
+
+var layerField = document.getElementById("canvasLayerNumber");
+layerField.value = 0;
+
+//mouse events
+/*
+baseCanvas.addEventListener('mousemove', draw);
+baseCanvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+baseCanvas.addEventListener('mouseup', () => isDrawing = false);
+baseCanvas.addEventListener('mouseout', () => isDrawing = false);
+*/
+addListener(baseCanvas);
+
+function addListener(myCanvas){
+    myCanvas.addEventListener('mousemove', draw);
+    myCanvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+    myCanvas.addEventListener('mouseup', () => isDrawing = false);
+    myCanvas.addEventListener('mouseout', () => isDrawing = false);
+}
+
+//get refrance to textfild
+var lineTextField = document.getElementById("penSizeTextField");
+lineTextField.value = ctx.lineWidth;
+
+//increase the width of the pen
+function plus() {
+    ctx.lineWidth++;
+    lineTextField.value = ctx.lineWidth;
+    console.log(ctx.lineWidth);
+}
+
+//decrease the width of the pen
+function minus() {
+    if (ctx.lineWidth >= 2) {
+        ctx.lineWidth--;
+        lineTextField.value = ctx.lineWidth;
+        console.log(ctx.lineWidth);
+    }
+}
+
+//called when text field is updated. if the number inputed is valed it will update the pen lingth
+function lineTextFieldEditor() {
+    let num = Number(lineTextField.value);
+    if (isNaN(num) || num < 1) {
+        lineTextField.value = ctx.lineWidth;
+        return;
+    }
+    ctx.lineWidth = num;
+}
+
+function layerNumber() {
+    let num = Number(layerField.value);
+    if(isNaN(num) || num < 0) {
+        return;
+    }
+    layerNum = num;
+    ctx = canvasList[layerNum].getContext('2d');
+    lineTextField.value = ctx.lineWidth;
+}
+
+function addLayer() {
+    var newCanvas = document.createElement('canvas');
+    newCanvas.setAttribute("class", "canvas");
+    newCanvas.id = "layer" + canvasList.length.toString();
+    newCanvas.width = baseCanvas.width;
+    newCanvas.height = baseCanvas.height;
+    newCanvas.style = "border:1px solid #000000; position: absolute"
+    newCanvas.style.zIndex = canvasList.length;
+    var newCtx  = newCanvas.getContext('2d');
+    newCtx.strokeStyle = '#000000';
+    newCtx.lineJoin = 'round';
+    newCtx.lineCap = 'round';
+    canvasContainer.appendChild(newCanvas);
+    canvasList = canvasContainer.getElementsByClassName('canvas');
+    addListener(canvasList[canvasList.length - 1]);
+}
 //function to draw on canvas
 function draw(e) {
 
@@ -32,55 +118,12 @@ function draw(e) {
     [lastX, lastY] = [e.offsetX, e.offsetY];
 }
 
-//mouse events
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mousedown', (e) => {
-    isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-});
-canvas.addEventListener('mouseup', () => isDrawing = false);
-canvas.addEventListener('mouseout', () => isDrawing = false);
-
-//get refrance to textfild
-var lineTextField = document.getElementById("penSizeTextField");
-lineTextField.value = lineWidth;
-
-//increase the width of the pen
-function plus() {
-    lineWidth++;
-    lineTextField.value = lineWidth;
-    console.log(lineWidth);
-    ctx.lineWidth = lineWidth;
-}
-
-//decrease the width of the pen
-function minus() {
-    if (lineWidth >= 2) {
-        lineWidth--;
-        lineTextField.value = lineWidth;
-        console.log(lineWidth);
-        ctx.lineWidth = lineWidth;
-    }
-}
-
-//called when text field is updated. if the number inputed is valed it will update the pen lingth
-function lineTextFieldEditor() {
-    let num = Number(lineTextField.value);
-    if (isNaN(num) || num < 1) {
-        lineTextField.value = lineWidth;
-        return;
-    }
-    lineWidth = num;
-    ctx.lineWidth = lineWidth;
-}
-
 //clear canvas
 function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, baseCanvas.width, baseCanvas.height);
 }
 
 //change painting color
 function colorChanger(color) {
     ctx.strokeStyle = color;
 }
-

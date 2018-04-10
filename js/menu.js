@@ -17,4 +17,5 @@ $(document).ready(function(){
     if($triggerOn !== event.target && !$triggerOn.has(event.target).length){
       $(".is-open").hide();
     }            
-  });  
+  });
+  
