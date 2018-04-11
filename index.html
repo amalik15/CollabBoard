@@ -31,12 +31,37 @@ University of Illinois at Chicago.
 </head>
 
 <body>
+
+<div style="display:none">
+<img id = "colorWheel" src="colorWheel.png">
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+		<canvas id = "colorCanvas" width = "200" height = "200" style = "z-index: 1000; position: relative; top: 0px; left: -15px" > </canvas>
+
+		<div id = "horScroll" onscroll = "horScroll()" style = "z-index:1002; position:relative; top: 0px; left: -15px;">
+			<div id="content"> </div>
+		</div>
+		
+		<div id = "vertScroll" onscroll = "vertScroll()" style = "z-index:1001; position: absolute; top: 30px; left: 215px;">
+			<div id="content"></div>
+		</div>
+
+
+</div>
+
+</div>
+
   <!-- START: nav -->
   <div class="sub-nav">
     <div>
 
       <ul>
-
 
         <li class="dropdown">
           <a href="#">File</a>
@@ -135,18 +160,21 @@ University of Illinois at Chicago.
   <!-- END: nav -->
   <div id=toolbar>
     <!--these buttons should be place holders till we figure out a better way to change color -->
-    <button id='black' type="button" onclick="colorChanger('#000000')" style='background-color: #000000'> B </button>
-    <button id='blue' type="button" onclick="colorChanger('#4286f4')" style='background-color: #4286f4'> B </button>
-    <button id='yellow' type="button" onclick="colorChanger('#f4f13f')" style='background-color: #f4f13f'> Y </button>
-    <button id='green' type="button" onclick="colorChanger('#41f45f')" style='background-color: #41f45f'> G </button>
-    <button id='red' type="button" onclick="colorChanger('#bc1a3d')" style='background-color: #bc1a3d'> R </button>
+
+    <button id='myBtn' type="button" onclick="colorWheel()"> C </button>
 
     <input id='penSizeTextField' type="text" size="1" onchange = 'lineTextFieldEditor()'>
     <button id='+B' type="button" onclick=plus()>+</button>
     <button id='-B' type="button" onclick=minus()>-</button>
     <button id='clearB' type="button" onclick=clearCanvas()>clear</button>
+    <input id='canvasLayerNumber' type="text" size="1" onchange=layerNumber()>
+    <button id='addLayer' type="button" onclick=addLayer()>AddLayer</button>
+    <div id='canvasIndicator' style="float:right;">
+    </div>
   </div>
-  <canvas id="drawingCanvas" width="490" height="220" style="border:1px solid #000000;"></canvas>
+  <div id="canvasList">
+    <canvas class="canvas" id="baseCanvas" width="490" height="220" style="border:1px solid #000000; position:absolute; z-index: 0;"></canvas>
+  </div>
   <script type="text/javascript" src="js/canvas.js"></script>
 </body>
 
