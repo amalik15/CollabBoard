@@ -69,7 +69,8 @@ li > ul{display:none;}
 #drawingCanvas{
     
      position: absolute;
-     z-index: -1;
+     z-index: -1; 
+   
     
 }
 
@@ -79,7 +80,6 @@ li > ul{display:none;}
     position: absolute;
     z-index: -1;    
   
-   
 }
 #button1{
     position: relative;
@@ -91,3 +91,7 @@ li > ul{display:none;}
     top:250px;
     
 }
+
+
+
+ 
