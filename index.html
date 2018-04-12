@@ -32,13 +32,12 @@
          <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-               <canvas id = "colorCanvas" width = "200" height = "200" style = "z-index: 1000; position: relative; top: 0px; left: -15px" > </canvas>
-               <div id = "horScroll" onscroll = "horScroll()" style = "z-index:1002; position:relative; top: 0px; left: -15px;">
-                  <div id="content"> </div>
+               <canvas id = "colorCanvas" width = "200" height = "200" style = "z-index: 1000; position: relative; top: -15px; left: -15px" > </canvas>
+							 <canvas id = "satBar" width = "200" height = "25" style = "z-index:1002; position:relative; top:-15px; left:-15px;"> </canvas>
                </div>
-               <div id = "vertScroll" onscroll = "vertScroll()" style = "z-index:1001; position: absolute; top: 30px; left: 215px;">
-                  <div id="content"></div>
+								<canvas id = "brightBar" width = "25" height = "200" style = "z-index:1001; position:absolute; top:105px; left:250px;">
                </div>
+							 	
             </div>
          </div>
          <!-- START: nav -->
