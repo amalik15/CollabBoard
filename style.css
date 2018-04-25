@@ -692,6 +692,10 @@ body {
     font-size: 1.8em !important;
   }
 
+  
 }
 
+.drop_visible {
+    z-index: 1000;
+  }
       
