@@ -100,6 +100,42 @@ li > ul{display:none;}
       .sub-nav ul ul li a {padding: 15px 40px; color: #fff;}
       .sub-nav ul ul li a:hover {background: #4b545f;}
 
+/*///List Box Code*/
+
+#box{
+    width: 300px;
+    height: 40%;
+    position: absolute;
+    z-index: 999;
+    margin: top;
+    margin: left;
+
+}
+#drawingCanvas{
+    
+     position: absolute;
+     z-index: -1; 
+   
+    
+}
+
+#items{
+    width: 300px;
+    height: 40%;
+    position: absolute;
+    z-index: 999;    
+  
+}
+#button1{
+    position: relative;
+    top:250px;
+    
+}
+#button2{
+    position: relative;
+    top:250px;
+    
+}
 div,
 span {
   height: 100%;

@@ -1,376 +1,217 @@
 <!-- 
-   CollabBoard
-   Team: Ovidiu Bahnean
-         Peter Bengtson
-         Emmanuel Escobar
-         David Fulmer
-         Abdulaziz Malik
-   A collaborative design software used for quick sketching and sharing of design 
-   ideas. CollabBoard is being developed as a UI Design project for CS422 at at the 
-   University of Illinois at Chicago.
-   -->
-   <!DOCTYPE html>
-   <html>
-      <head>
-         <meta charset="utf-8">
-         <title>CollabBoard</title>
-         <link rel="stylesheet" href="style.css">
-         <!-- Latest compiled and minified CSS -->
-         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-         <!-- jQuery library -->
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-         <script src="js/menu.js"></script>
-         <!-- Latest compiled JavaScript -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-         <script src="https://apis.google.com/js/platform.js" async defer></script>
-      </head>
-      <body>
-         <div style="display:none">
-            <img id = "colorWheel" src="colorWheel.png">
-         </div>
-         <!-- The Modal -->
-         <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-               <canvas id = "colorCanvas" width = "200" height = "200" style = "z-index: 1000; position: relative; top: -15px; left: -15px" > </canvas>
-							 <canvas id = "satBar" width = "200" height = "25" style = "z-index:1002; position:relative; top:-15px; left:-15px;"> </canvas>
-               </div>
-								<canvas id = "brightBar" width = "25" height = "200" style = "z-index:1001; position:absolute; top:105px; left:250px;">
-               </div>
-							 	
-            </div>
-         </div>
-         <!-- START: nav -->
-         <div class="sub-nav">
-            <div>
-               <ul>
-                  <li class="dropdown">
-                     <a href="#">File</a>
-                     <ul class="is-open">
-                        <li>
-                           <a href="#">New</a>
-                        </li>
-                        <li>
-                           <a href="#">Import</a>
-                        </li>
-                        <li>
-                           <a href="#">Export</a>
-                        </li>
-                        <li>
-                           <a href="#">Print</a>
-                        </li>
-                        <li>
-                           <a href="#">Share</a>
-                        </li>
-                        <li>
-                           <a href="#">Exit</a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="dropdown">
-                     <a>Edit</a>
-                     <ul class="is-open">
-                        <li>
-                           <a href="#">Undo</a>
-                        </li>
-                        <li>
-                           <a href="#">Redo</a>
-                        </li>
-                        <li>
-                           <a href="#">Cut</a>
-                        </li>
-                        <li>
-                           <a href="#">Copy</a>
-                        </li>
-                        <li>
-                           <a href="#">Paste</a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="dropdown">
-                     <a>View</a>
-                     <ul class="is-open">
-                        <li>
-                           <a href="#">Layers</a>
-                        </li>
-                        <li>
-                           <a href="#">Collaborators</a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="dropdown">
-                     <a>Tools</a>
-                     <ul class="is-open">
-                        <li>
-                           <a href="#">Pen</a>
-                        </li>
-                        <li>
-                           <a href="#">Text</a>
-                        </li>
-                        <li>
-                           <a href="#">Color Wheet</a>
-                        </li>
-                        <li>
-                           <a href="#">Import Image</a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="dropdown">
-                     <a>Help</a>
-                     <ul class="is-open">
-                        <li>
-                           <a href="#">Resources</a>
-                        </li>
-                        <li>
-                           <a href="#">CollabBoard</a>
-                        </li>
-                     </ul>
-                  </li>
-               </ul>
-            </div>
-         </div>
-         <!-- END: nav -->
-         <div id=toolbar>
-            <!--these buttons should be place holders till we figure out a better way to change color -->
-            <button id='myBtn' type="button" onclick="colorWheel()"> C </button>
-            <input id='penSizeTextField' type="text" size="1" onchange = 'lineTextFieldEditor()'>
-            <button id='+B' type="button" onclick=plus()>+</button>
-            <button id='-B' type="button" onclick=minus()>-</button>
-            <button id='clearB' type="button" onclick=clearCanvas()>clear</button>
-            <input id='canvasLayerNumber' type="text" size="1" onchange=layerNumber()>
-            <button id='addLayer' type="button" onclick=addLayer()>AddLayer</button>
-            <div id='canvasIndicator' style="float:right;">
-            </div>
-         </div>
-         <div id="canvasList">
-            <canvas class="canvas" id="baseCanvas" width="490" height="220" style="border:1px solid #000000; position:absolute; z-index: 0;"></canvas>
-         </div>
-         <div id = "chatdiv">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <div class="rw">
-               <div class="row app-one">
-                  <div class="col-sm-4 side">
-                     <div class="side-one">
-                        <div class="row heading">
-                           <div class="col-sm-3 col-xs-3 heading-avatar">
-                              <div class="heading-avatar-icon">
-                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                              </div>
-                           </div>
-                           <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
-                              <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
-                           </div>
-                           <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
-                              <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
-                           </div>
-                        </div>
-                        <div class="row searchBox">
-                           <div class="col-sm-12 searchBox-inner">
-                              <div class="form-group has-feedback">
-                                 <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
-                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row sideBar">
-                           <div class="row sideBar-body">
-                              <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                 <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                                 </div>
-                              </div>
-                              <div class="col-sm-9 col-xs-9 sideBar-main">
-                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                       <span class="name-meta">John Doe
-                                       </span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row sideBar-body">
-                              <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                 <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png">
-                                 </div>
-                              </div>
-                              <div class="col-sm-9 col-xs-9 sideBar-main">
-                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                       <span class="name-meta">Bob Lee
-                                       </span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row sideBar-body">
-                              <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                 <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png">
-                                 </div>
-                              </div>
-                              <div class="col-sm-9 col-xs-9 sideBar-main">
-                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                       <span class="name-meta">Bill Hannes
-                                       </span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row sideBar-body">
-                              <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                 <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png">
-                                 </div>
-                              </div>
-                              <div class="col-sm-9 col-xs-9 sideBar-main">
-                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                       <span class="name-meta">William Burr
-                                       </span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row sideBar-body">
-                              <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                 <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png">
-                                 </div>
-                              </div>
-                              <div class="col-sm-9 col-xs-9 sideBar-main">
-                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                       <span class="name-meta">Sean Walker
-                                       </span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row sideBar-body">
-                              <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                 <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
-                                 </div>
-                              </div>
-                              <div class="col-sm-9 col-xs-9 sideBar-main">
-                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                       <span class="name-meta">Jim Darnes
-                                       </span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row sideBar-body">
-                              <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                 <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
-                                 </div>
-                              </div>
-                              <div class="col-sm-9 col-xs-9 sideBar-main">
-                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                       <span class="name-meta">Greg McMahonn
-                                       </span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row sideBar-body">
-                              <div class="col-sm-3 col-xs-3 sideBar-avatar">
-                                 <div class="avatar-icon">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar8.png">
-                                 </div>
-                              </div>
-                              <div class="col-sm-9 col-xs-9 sideBar-main">
-                                 <div class="row">
-                                    <div class="col-sm-8 col-xs-8 sideBar-name">
-                                       <span class="name-meta">Jay Cutler
-                                       </span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div >
-               <div class="row rw">
-                  <div class="col-sm-4 side">
-                     <div class = "side-one">
-                        <div class="row heading">
-                           <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
-                              <div class="heading-avatar-icon">
-                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                              </div>
-                           </div>
-                           <div class="col-sm-8 col-xs-7 heading-name">
-                              <a class="heading-name-meta">John Doe
-                              </a>
-                              <span class="heading-online">Online</span>
-                           </div>
-                           <div class="col-sm-1 col-xs-1  heading-dot pull-right">
-                              <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
-                           </div>
-                        </div>
-                        <div class="row message" id="conversation">
-                           <div class="row message-previous">
-                              <div class="col-sm-12 previous">
-                                 <a onclick="previous(this)" id="ankitjain28" name="20">
-                                 Show Previous Message!
-                                 </a>
-                              </div>
-                           </div>
-                           <div class="row message-body">
-                              <div class="col-sm-12 message-main-receiver">
-                                 <div class="receiver">
-                                    <div class="message-text">
-                                       Hi, what are you doing?!
-                                    </div>
-                                    <span class="message-time pull-right">
-                                    Sun
-                                    </span>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="row message-body">
-                              <div class="col-sm-12 message-main-sender">
-                                 <div class="sender">
-                                    <div class="message-text">
-                                       I am doing nothing man!
-                                    </div>
-                                    <span class="message-time pull-right">
-                                    Sun
-                                    </span>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row reply">
-                           <div class="col-sm-1 col-xs-1 reply-emojis">
-                              <i class="fa fa-smile-o fa-2x"></i>
-                           </div>
-                           <div class="col-sm-9 col-xs-9 reply-main">
-                              <textarea class="form-control" rows="1" id="comment"></textarea>
-                           </div>
-                           <div class="col-sm-1 col-xs-1 reply-recording">
-                              <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
-                           </div>
-                           <div class="col-sm-1 col-xs-1 reply-send">
-                              <i class="fa fa-send fa-2x" aria-hidden="true"></i>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <script type="text/javascript" src="js/canvas.js"></script>
-         <script type="text/javascript" src="js/chat.js"></script>
-      </body>
-   </html>
+CollabBoard
+Team: Ovidiu Bahnean
+      Peter Bengtson
+      Emmanuel Escobar
+      David Fulmer
+      Abdulaziz Malik
+A collaborative design software used for quick sketching and sharing of design 
+ideas. CollabBoard is being developed as a UI Design project for CS422 at at the 
+University of Illinois at Chicago.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>CollabBoard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/menu.js"></script>
+
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+<!--//Test listBox-->
+
+
+</head>
+
+<body>
+
+<div style="display:none">
+<img id = "colorWheel" src="colorWheel.png">
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+		<canvas id = "colorCanvas" width = "200" height = "200" style = "z-index: 1000; position: relative; top: 0px; left: -15px" > </canvas>
+
+		<div id = "horScroll" onscroll = "horScroll()" style = "z-index:1002; position:relative; top: 0px; left: -15px;">
+			<div id="content"> </div>
+		</div>
+		
+		<div id = "vertScroll" onscroll = "vertScroll()" style = "z-index:1001; position: absolute; top: 30px; left: 215px;">
+			<div id="content"></div>
+		</div>
+
+
+</div>
+
+</div>
+
+  <!-- START: nav -->
+  <div class="sub-nav">
+    <div>
+
+      <ul>
+
+        <li class="dropdown">
+          <a href="#">File</a>
+          <ul class="is-open">
+            <li>
+              <a href="#">New</a>
+            </li>
+            <li>
+              <a href="#">Import</a>
+            </li>
+            <li>
+              <a href="#">Export</a>
+            </li>
+            <li>
+              <a href="#">Print</a>
+            </li>
+            <li>
+              <a href="#">Share</a>
+            </li>
+            <li>
+              <a href="#">Exit</a>
+            </li>
+          </ul>
+        </li>
+
+
+        <li class="dropdown">
+          <a>Edit</a>
+          <ul class="is-open">
+            <li>
+              <a href="#">Undo</a>
+            </li>
+            <li>
+              <a href="#">Redo</a>
+            </li>
+            <li>
+              <a href="#">Cut</a>
+            </li>
+            <li>
+              <a href="#">Copy</a>
+            </li>
+            <li>
+              <a href="#">Paste</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a>View</a>
+          <ul class="is-open">
+            <li>
+              <a href="#">Layers</a>
+            </li>
+            <li>
+              <a href="#">Collaborators</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a>Tools</a>
+          <ul class="is-open">
+            <li>
+              <a href="#">Pen</a>
+            </li>
+            <li>
+              <a href="#">Text</a>
+            </li>
+            <li>
+              <a href="#">Color Wheet</a>
+            </li>
+            <li>
+              <a href="#">Import Image</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a>Help</a>
+          <ul class="is-open">
+            <li>
+              <a href="#">Resources</a>
+            </li>
+            <li>
+              <a href="#">CollabBoard</a>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+  <!-- END: nav -->
+  <div id=toolbar>
+    <!--these buttons should be place holders till we figure out a better way to change color -->
+
+    <button id='myBtn' type="button" onclick="colorWheel()"> C </button>
+
+    <input id='penSizeTextField' type="text" size="1" onchange = 'lineTextFieldEditor()'>
+    <button id='+B' type="button" onclick=plus()>+</button>
+    <button id='-B' type="button" onclick=minus()>-</button>
+    <button id='clearB' type="button" onclick=clearCanvas()>clear</button>
+    <input id='canvasLayerNumber' type="text" size="1" onchange=layerNumberFromBox()>
+    <button id='addLayer' type="button" onclick=addLayer()>AddLayer</button>
+    <div id='canvasIndicator' style="float:right;">
+    </div>
+  </div>
+  <div id="canvasList">
+    <canvas class="canvas" id="baseCanvas" width="490" height="220" style="border:1px solid #000000; position:absolute; z-index: 0;"></canvas>
+  </div>
+  
+<!--  List Box Code-->
    
+   
+   
+   
+<select class="sortItems" id="items" size="15" multiple="" Property="Canvas.Top" style="z-index: 999;" onchange=layerNumberFromList() >
+    
+    <option value="0">baseLayer</option>
+    <!--
+    <option value="1">layer1</option>
+    <option value="2">layer2</option>
+    <option value="3">layer3</option>
+    <option value="4">layer4</option>
+    <option value="5">layer5</option>
+    <option value="6">layer6</option>
+    -->
+</select>
+<br>
+
+
+
+<br>
+<button id="button1" style="z-index: 999;" onclick="boxMove('items','up')">Move Up</button>
+
+<button id="button2" style="z-index: 999;" onclick="boxMove('items','down')" >Move Down</button>
+
+  <script type="text/javascript" src="js/canvas.js"></script>
+  <script type="text/javascript" src="js/list_box.js"></script>
+ 
+  
+</body>
+
+</html>
