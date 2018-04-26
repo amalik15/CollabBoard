@@ -755,3 +755,6 @@ body {
     overflow: auto;
 }
       
+#canvasList {
+  cursor: url(https://findicons.com/files/icons/1672/mono/32/pencil.png) 0 50, auto;
+}

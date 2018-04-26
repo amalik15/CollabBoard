@@ -919,13 +919,13 @@
 
 
   <div id="layerBoxDiv" style="z-index: 999; visibility: visible;">
-    <select class="sortItems" id="items" size="15" multiple="" style="z-index: 999;" onchange=layerNumberFromList()>
-      <option value="0">baseLayer</option>
-    </select>
     <div class="layerBoxButtons">
       <button id="button1" value="Up" style="z-index: 999;" onclick="boxMove('items','up')">Up</button>
       <button id="button2" value="Down" style="z-index: 999;" onclick="boxMove('items','down')">Down</button>
     </div>
+    <select class="sortItems" id="items" size="15" multiple="" style="z-index: 999;" onchange=layerNumberFromList()>
+      <option value="0">baseLayer</option>
+    </select>
   </div>
 
   <script type="text/javascript" src="js/canvas.js"></script>

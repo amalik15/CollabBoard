@@ -2,8 +2,8 @@
 var canvasContainer = document.querySelector('#canvasList');
 var canvasList = canvasContainer.getElementsByClassName('canvas');
 var baseCanvas = canvasList[0];
-baseCanvas.width = window.innerWidth;
-baseCanvas.height = window.innerHeight;
+baseCanvas.width = window.innerWidth * 0.998;
+baseCanvas.height = window.innerHeight * 0.84;
 
 var ctx = baseCanvas.getContext('2d');
 ctx.strokeStyle = '#000000';
