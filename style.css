@@ -210,6 +210,7 @@ body {
   position: relative;
   display: block;
   top: 0;
+  background-color: white;
 }
 
 .side-two {
