@@ -18,6 +18,8 @@
          <!-- Latest compiled and minified CSS -->
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
          <!-- jQuery library -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script src="js/menu.js"></script>
          <!-- Latest compiled JavaScript -->
@@ -127,13 +129,14 @@
                         </li>
                      </ul>
                   </li>
+                  <i id="showboxes" class="fa fa-address-book-o navbar-right" style="font-size:36px "></i>
                </ul>
-               <i class="fa fa-vcard" style="font-size:48px;color:red position:absolute;right:"></i>
+               
             </div>
 
          </div>
          <!-- END: nav -->
-         <div id=toolbar>
+         <div id="toolbar">
             <!--these buttons should be place holders till we figure out a better way to change color -->
             <button id='myBtn' type="button" onclick="colorWheel()"> C </button>
             <input id='penSizeTextField' type="text" size="1" onchange = 'lineTextFieldEditor()'>
@@ -149,7 +152,7 @@
             <canvas class="canvas" id="baseCanvas" width="490" height="220" style="border:1px solid #000000; position:absolute; z-index: 0;"></canvas>
          </div>
          
-         <div id = "#usersbox" class="rw" style="position: absolute;width: 33%; top:10px; right:5px; display: none;">
+         <div id = "usersbox" class="rw" style="position: absolute;width: 33%; top:0px; right:0px; display: none;">
   <div class="row app-one">
     <div class=" side">
       <div class="side-one">
@@ -160,7 +163,7 @@
             </div>
           </div>
           <div class="col-sm-1 col-xs-1  heading-dot  pull-right">
-            <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+            <i id = "contacts-hide"class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
           </div>
           <div class="col-sm-2 col-xs-2 heading-compose  pull-right">
             <i class="fa fa-comments fa-2x  pull-right" aria-hidden="true"></i>
@@ -185,7 +188,7 @@
             </div>
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
-                <div class="col-sm-8 col-xs-8 sideBar-name">
+                <div id = "johndoe" class="col-sm-8 col-xs-8 sideBar-name">
                   <span class="name-meta">John Doe
                 </span>
                 </div>
@@ -202,7 +205,7 @@
             </div>
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
-                <div class="col-sm-8 col-xs-8 sideBar-name">
+                <div id = "boblee" class="col-sm-8 col-xs-8 sideBar-name">
                   <span class="name-meta">Bob Lee
                 </span>
                 </div>
@@ -218,7 +221,7 @@
             </div>
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
-                <div class="col-sm-8 col-xs-8 sideBar-name">
+                <div id="billhannes" class="col-sm-8 col-xs-8 sideBar-name">
                   <span class="name-meta">Bill Hannes
                 </span>
                 </div>
@@ -234,7 +237,7 @@
             </div>
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
-                <div class="col-sm-8 col-xs-8 sideBar-name">
+                <div id="williamburr" class="col-sm-8 col-xs-8 sideBar-name">
                   <span class="name-meta">William Burr
                 </span>
                 </div>
@@ -250,7 +253,7 @@
             </div>
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
-                <div class="col-sm-8 col-xs-8 sideBar-name">
+                <div id= "seanwalker" class="col-sm-8 col-xs-8 sideBar-name">
                   <span class="name-meta">Sean Walker
                 </span>
                 </div>
@@ -266,7 +269,7 @@
             </div>
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
-                <div class="col-sm-8 col-xs-8 sideBar-name">
+                <div id="jimdarnes" class="col-sm-8 col-xs-8 sideBar-name">
                   <span class="name-meta">Jim Darnes
                 </span>
                 </div>
@@ -282,7 +285,7 @@
             </div>
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
-                <div class="col-sm-8 col-xs-8 sideBar-name">
+                <div id="gregmcmahonn" class="col-sm-8 col-xs-8 sideBar-name">
                   <span class="name-meta">Greg McMahonn
                 </span>
                 </div>
@@ -298,7 +301,7 @@
             </div>
             <div class="col-sm-9 col-xs-9 sideBar-main">
               <div class="row">
-                <div class="col-sm-8 col-xs-8 sideBar-name">
+                <div id="jaycutler" class="col-sm-8 col-xs-8 sideBar-name">
                   <span class="name-meta">Jay Cutler
                 </span>
                 </div>
@@ -318,7 +321,7 @@
 
 
 
-<div id = "#chatbox" class="rw" style="position: absolute;width: 33%; top:350px; right:5px; display: none;" >
+<div id = "doe" class="rw" style="position: absolute;width: 33%; top:350px; right:0px; display: none;" >
    <div class="side">
       <div class = "side-one">
         <div class="row heading"> 
@@ -333,7 +336,518 @@
           <span class="heading-online">Online</span>
         </div>
         <div class="col-sm-1 col-xs-1  heading-dot pull-right">
-          <i class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+          <i id = "chat-hide" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
+      </div>
+
+        <div class="row message" id="conversation">
+        <div class="row message-previous">
+          <div class="col-sm-12 previous">
+            <a onclick="previous(this)" id="ankitjain28" name="20">
+            Show Previous Message!
+            </a>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-receiver">
+            <div class="receiver">
+              <div class="message-text">
+               Hi, what are you doing?!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+              <div class="message-text">
+                I am doing nothing man!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reply">
+        <div class="col-sm-1 col-xs-1 reply-emojis">
+          <i class="fa fa-smile-o fa-2x"></i>
+        </div>
+        <div class="col-sm-9 col-xs-9 reply-main">
+          <textarea class="form-control" rows="1" id="comment"></textarea>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-recording">
+          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-send">
+          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+
+  <div id = "lee" class="rw" style="position: absolute;width: 33%; top:350px; right:0px; display: none;" >
+   <div class="side">
+      <div class = "side-one">
+        <div class="row heading"> 
+        <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="https://bootdey.com/img/Content/avatar/avatar2.png">
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-7 heading-name">
+          <a class="heading-name-meta">Bob Lee
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+          <i id = "chat-hide2" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
+      </div>
+
+        <div class="row message" id="conversation">
+        <div class="row message-previous">
+          <div class="col-sm-12 previous">
+            <a onclick="previous(this)" id="ankitjain28" name="20">
+            Show Previous Message!
+            </a>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-receiver">
+            <div class="receiver">
+              <div class="message-text">
+               Hi, what are you doing?!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+              <div class="message-text">
+                I am doing nothing man!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reply">
+        <div class="col-sm-1 col-xs-1 reply-emojis">
+          <i class="fa fa-smile-o fa-2x"></i>
+        </div>
+        <div class="col-sm-9 col-xs-9 reply-main">
+          <textarea class="form-control" rows="1" id="comment"></textarea>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-recording">
+          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-send">
+          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+
+  <div id = "hannes" class="rw" style="position: absolute;width: 33%; top:350px; right:0px; display: none;" >
+   <div class="side">
+      <div class = "side-one">
+        <div class="row heading"> 
+        <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="https://bootdey.com/img/Content/avatar/avatar3.png">
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-7 heading-name">
+          <a class="heading-name-meta">Bill Hannes
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+          <i id = "chat-hide3" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
+      </div>
+
+        <div class="row message" id="conversation">
+        <div class="row message-previous">
+          <div class="col-sm-12 previous">
+            <a onclick="previous(this)" id="ankitjain28" name="20">
+            Show Previous Message!
+            </a>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-receiver">
+            <div class="receiver">
+              <div class="message-text">
+               Hi, what are you doing?!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+              <div class="message-text">
+                I am doing nothing man!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reply">
+        <div class="col-sm-1 col-xs-1 reply-emojis">
+          <i class="fa fa-smile-o fa-2x"></i>
+        </div>
+        <div class="col-sm-9 col-xs-9 reply-main">
+          <textarea class="form-control" rows="1" id="comment"></textarea>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-recording">
+          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-send">
+          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+
+  <div id = "burr" class="rw" style="position: absolute;width: 33%; top:350px; right:0px; display: none;" >
+   <div class="side">
+      <div class = "side-one">
+        <div class="row heading"> 
+        <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="https://bootdey.com/img/Content/avatar/avatar4.png">
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-7 heading-name">
+          <a class="heading-name-meta">William Burr
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+          <i id = "chat-hide4" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
+      </div>
+
+        <div class="row message" id="conversation">
+        <div class="row message-previous">
+          <div class="col-sm-12 previous">
+            <a onclick="previous(this)" id="ankitjain28" name="20">
+            Show Previous Message!
+            </a>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-receiver">
+            <div class="receiver">
+              <div class="message-text">
+               Hi, what are you doing?!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+              <div class="message-text">
+                I am doing nothing man!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reply">
+        <div class="col-sm-1 col-xs-1 reply-emojis">
+          <i class="fa fa-smile-o fa-2x"></i>
+        </div>
+        <div class="col-sm-9 col-xs-9 reply-main">
+          <textarea class="form-control" rows="1" id="comment"></textarea>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-recording">
+          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-send">
+          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+
+  <div id = "walker" class="rw" style="position: absolute;width: 33%; top:350px; right:0px; display: none;" >
+   <div class="side">
+      <div class = "side-one">
+        <div class="row heading"> 
+        <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="https://bootdey.com/img/Content/avatar/avatar5.png">
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-7 heading-name">
+          <a class="heading-name-meta">Sean Walker
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+          <i id = "chat-hide5" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
+      </div>
+
+        <div class="row message" id="conversation">
+        <div class="row message-previous">
+          <div class="col-sm-12 previous">
+            <a onclick="previous(this)" id="ankitjain28" name="20">
+            Show Previous Message!
+            </a>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-receiver">
+            <div class="receiver">
+              <div class="message-text">
+               Hi, what are you doing?!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+              <div class="message-text">
+                I am doing nothing man!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reply">
+        <div class="col-sm-1 col-xs-1 reply-emojis">
+          <i class="fa fa-smile-o fa-2x"></i>
+        </div>
+        <div class="col-sm-9 col-xs-9 reply-main">
+          <textarea class="form-control" rows="1" id="comment"></textarea>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-recording">
+          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-send">
+          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+
+  <div id = "darnes" class="rw" style="position: absolute;width: 33%; top:350px; right:0px; display: none;" >
+   <div class="side">
+      <div class = "side-one">
+        <div class="row heading"> 
+        <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="https://bootdey.com/img/Content/avatar/avatar6.png">
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-7 heading-name">
+          <a class="heading-name-meta">Jim Darnes
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+          <i id = "chat-hide6" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
+      </div>
+
+        <div class="row message" id="conversation">
+        <div class="row message-previous">
+          <div class="col-sm-12 previous">
+            <a onclick="previous(this)" id="ankitjain28" name="20">
+            Show Previous Message!
+            </a>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-receiver">
+            <div class="receiver">
+              <div class="message-text">
+               Hi, what are you doing?!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+              <div class="message-text">
+                I am doing nothing man!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reply">
+        <div class="col-sm-1 col-xs-1 reply-emojis">
+          <i class="fa fa-smile-o fa-2x"></i>
+        </div>
+        <div class="col-sm-9 col-xs-9 reply-main">
+          <textarea class="form-control" rows="1" id="comment"></textarea>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-recording">
+          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-send">
+          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+
+  <div id = "mcmahonn" class="rw" style="position: absolute;width: 33%; top:350px; right:0px; display: none;" >
+   <div class="side">
+      <div class = "side-one">
+        <div class="row heading"> 
+        <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-7 heading-name">
+          <a class="heading-name-meta">Greg McMahonn
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+          <i id = "chat-hide7" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
+        </div>
+      </div>
+
+        <div class="row message" id="conversation">
+        <div class="row message-previous">
+          <div class="col-sm-12 previous">
+            <a onclick="previous(this)" id="ankitjain28" name="20">
+            Show Previous Message!
+            </a>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-receiver">
+            <div class="receiver">
+              <div class="message-text">
+               Hi, what are you doing?!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row message-body">
+          <div class="col-sm-12 message-main-sender">
+            <div class="sender">
+              <div class="message-text">
+                I am doing nothing man!
+              </div>
+              <span class="message-time pull-right">
+                Sun
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row reply">
+        <div class="col-sm-1 col-xs-1 reply-emojis">
+          <i class="fa fa-smile-o fa-2x"></i>
+        </div>
+        <div class="col-sm-9 col-xs-9 reply-main">
+          <textarea class="form-control" rows="1" id="comment"></textarea>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-recording">
+          <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-1 col-xs-1 reply-send">
+          <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+
+  <div id = "cutler" class="rw" style="position: absolute;width: 33%; top:350px; right:0px; display: none;" >
+   <div class="side">
+      <div class = "side-one">
+        <div class="row heading"> 
+        <div class="col-sm-3 col-md-2 col-xs-3 heading-avatar">
+          <div class="heading-avatar-icon">
+            <img src="https://bootdey.com/img/Content/avatar/avatar8.png">
+          </div>
+        </div>
+        <div class="col-sm-8 col-xs-7 heading-name">
+          <a class="heading-name-meta">Jay Cutler
+          </a>
+          <span class="heading-online">Online</span>
+        </div>
+        <div class="col-sm-1 col-xs-1  heading-dot pull-right">
+          <i id = "chat-hide8" class="fa fa-ellipsis-v fa-2x  pull-right" aria-hidden="true"></i>
         </div>
       </div>
 
@@ -392,14 +906,20 @@
   </div>
 
 
+
          <script type="text/javascript" src="js/canvas.js"></script>
          <script type="text/javascript" src="js/chat.js"></script>
       </body>
       <script>
-         function myFunction() {
-         document.getElementById("myDropdown").classList.toggle("show");
-         }
 
+         window.onload =function (){
+
+         function myFunction() {
+         document.getElementById("showboxes").classList.toggle("show");
+         $('#showboxes').on('click', '#btn_a', function(){
+              console.log("hello");
+            });
+         }
          var chat = document.getElementById("collaborators");
          chat.onclick = function(){
          var box1 = document.getElementById("usersbox");
@@ -409,7 +929,217 @@
 
          box1.show();
          box2.show();
-      };
+          };
+
+         document.getElementById("showboxes").addEventListener("click", function(){
+            //document.getElementById();
+            console.log("hello");
+            document.getElementById("usersbox").style.display = 'block';
+            document.getElementById("showboxes").style.display = 'none';
+         });
+
+         document.getElementById("contacts-hide").addEventListener("click", function(){
+            document.getElementById("usersbox").style.display = 'none';
+            //document.getElementById("chatbox").style.display = 'none';
+            document.getElementById("showboxes").style.display = 'block';
+         });
+
+         
+          
+         document.getElementById("johndoe").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'block';
+         }); 
+
+         document.getElementById("boblee").addEventListener("click",function(){
+            document.getElementById("doe").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("lee").style.display = 'block';
+         }); 
+
+         document.getElementById("billhannes").addEventListener("click",function(){
+            document.getElementById("doe").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("hannes").style.display = 'block';
+         });
+
+         document.getElementById("williamburr").addEventListener("click",function(){
+            document.getElementById("doe").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("burr").style.display = 'block';
+            
+         });
+
+         document.getElementById("seanwalker").addEventListener("click",function(){
+            document.getElementById("doe").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'block';
+            
+         });
+
+         document.getElementById("jimdarnes").addEventListener("click",function(){
+            document.getElementById("doe").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'block';
+            
+         });
+
+         document.getElementById("gregmcmahonn").addEventListener("click",function(){
+            document.getElementById("doe").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'block';
+            
+         });
+
+         document.getElementById("jaycutler").addEventListener("click",function(){
+            document.getElementById("doe").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("cutler").style.display = 'block';
+            
+         });
+
+         document.getElementById("chat-hide").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'none';
+            //document.getElementById("showboxes").style.display = 'block';
+         });
+
+         document.getElementById("chat-hide2").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'none';
+            //document.getElementById("showboxes").style.display = 'block';
+         });
+         
+         document.getElementById("chat-hide3").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'none';
+            //document.getElementById("showboxes").style.display = 'block';
+         });
+
+         document.getElementById("chat-hide4").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'none';
+            //document.getElementById("showboxes").style.display = 'block';
+         });
+
+         document.getElementById("chat-hide5").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'none';
+            //document.getElementById("showboxes").style.display = 'block';
+         });
+
+         document.getElementById("chat-hide6").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'none';
+            //document.getElementById("showboxes").style.display = 'block';
+         });
+
+         document.getElementById("chat-hide7").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'none';
+            //document.getElementById("showboxes").style.display = 'block';
+         });
+
+         document.getElementById("chat-hide8").addEventListener("click", function(){
+            document.getElementById("lee").style.display = 'none';
+            document.getElementById("hannes").style.display = 'none';
+            document.getElementById("burr").style.display = 'none';
+            document.getElementById("walker").style.display = 'none';
+            document.getElementById("darnes").style.display = 'none';
+            document.getElementById("mcmahonn").style.display = 'none';
+            document.getElementById("cutler").style.display = 'none';
+            document.getElementById("doe").style.display = 'none';
+            //document.getElementById("showboxes").style.display = 'block';
+         });
+
+
+      }
+
+            
+         
       </script>
    </html>
    

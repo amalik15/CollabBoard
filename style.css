@@ -40,14 +40,14 @@ University of Illinois at Chicago.
 }
 
 #vertScroll{
-		height: 200px;
+		height: 150px;
 		width: 15px;
 		overflow: auto;
 }
 
 #horScroll{
 		height: 15px;
-		width: 200px;
+		width: 150px;
 		overflow: auto;
 }
 
@@ -698,4 +698,10 @@ body {
 .drop_visible {
     z-index: 1000;
   }
+
+.icon-bar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+}
       
