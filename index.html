@@ -34,13 +34,10 @@
          <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-               <canvas id = "colorCanvas" width = "200" height = "200" style = "z-index: 1000; position: relative; top: 0px; left: -15px" > </canvas>
-               <div id = "horScroll" onscroll = "horScroll()" style = "z-index:1002; position:relative; top: 0px; left: -15px;">
-                  <div id="content"> </div>
-               </div>
-               <div id = "vertScroll" onscroll = "vertScroll()" style = "z-index:1001; position: absolute; top: 30px; left: 215px;">
-                  <div id="content"></div>
-               </div>
+              <canvas id = "colorCanvas" width = "200" height = "200" style = "z-index: 1000; position: relative; top: -15px; left: -15px" > </canvas>
+              <canvas id = "satBar" width = "200" height = "25" style = "z-index:1002; position:relative; top:-15px; left:-15px;"> </canvas>
+              <canvas id = "brightBar" width = "25" height = "200" style = "z-index:1001; position:relative; top:-240px; left:190px;"></canvas>
+          
             </div>
          </div>
          <!-- START: nav -->
@@ -143,7 +140,7 @@
             <button id='+B' type="button" onclick=plus()>+</button>
             <button id='-B' type="button" onclick=minus()>-</button>
             <button id='clearB' type="button" onclick=clearCanvas()>clear</button>
-            <input id='canvasLayerNumber' type="text" size="1" onchange=layerNumber()>
+            <input id='canvasLayerNumber' type="text" size="1" onchange=layerNumberFromBox()>
             <button id='addLayer' type="button" onclick=addLayer()>AddLayer</button>
             <div id='canvasIndicator' style="float:right;">
             </div>
@@ -915,6 +912,31 @@
     </div>
   </div>
 
+  <!--  List Box Code-->
+   
+   
+   
+   
+<select class="sortItems" id="items" size="15" multiple="" Property="Canvas.Top" style="z-index: 999;" onchange=layerNumberFromList() >
+    
+  <option value="0">baseLayer</option>
+  <!--
+  <option value="1">layer1</option>
+  <option value="2">layer2</option>
+  <option value="3">layer3</option>
+  <option value="4">layer4</option>
+  <option value="5">layer5</option>
+  <option value="6">layer6</option>
+  -->
+</select>
+<br>
+
+
+
+<br>
+<button id="button1" style="z-index: 999;" onclick="boxMove('items','up')">Move Up</button>
+
+<button id="button2" style="z-index: 999;" onclick="boxMove('items','down')" >Move Down</button>
 
 
          <script type="text/javascript" src="js/canvas.js"></script>
