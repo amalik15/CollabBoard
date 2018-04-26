@@ -93,7 +93,7 @@
           <a>View</a>
           <ul class="is-open">
             <li>
-              <a href="#">Layers</a>
+              <a href="#" id="menuLayerItem" onclick=changeLayerViz()>Layers</a>
             </li>
             <li>
               <a href="#">Collaborators</a>
@@ -919,28 +919,15 @@
 
 
 
-
-  <select class="sortItems" id="items" size="15" multiple="" Property="Canvas.Top" style="z-index: 999;" onchange=layerNumberFromList()>
-
-    <option value="0">baseLayer</option>
-    <!--
-  <option value="1">layer1</option>
-  <option value="2">layer2</option>
-  <option value="3">layer3</option>
-  <option value="4">layer4</option>
-  <option value="5">layer5</option>
-  <option value="6">layer6</option>
-  -->
-  </select>
-  <br>
-
-
-
-  <br>
-  <button id="button1" style="z-index: 999;" onclick="boxMove('items','up')">Move Up</button>
-
-  <button id="button2" style="z-index: 999;" onclick="boxMove('items','down')">Move Down</button>
-
+  <div id="layerBoxDiv" style="z-index: 999; visibility: visible;">
+    <div class="layerBoxButtons">
+      <button id="button1" value="Up" style="z-index: 999;" onclick="boxMove('items','up')">Up</button>
+      <button id="button2" value="Down" style="z-index: 999;" onclick="boxMove('items','down')">Down</button>
+    </div>
+    <select class="sortItems" id="items" size="15" multiple="" style="z-index: 999;" onchange=layerNumberFromList()>
+      <option value="0">baseLayer</option>
+    </select>
+  </div>
 
   <script type="text/javascript" src="js/canvas.js"></script>
   <script type="text/javascript" src="js/chat.js"></script>

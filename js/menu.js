@@ -272,3 +272,14 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }	
+
+function changeLayerViz(){
+	var layerbox = document.getElementById("layerBoxDiv");
+
+	if( layerbox.style.visibility == "visible"){
+		layerbox.style.visibility = "hidden";
+	}
+	else{
+		layerbox.style.visibility = "visible";
+	}
+}
