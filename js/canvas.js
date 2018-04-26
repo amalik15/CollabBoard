@@ -146,3 +146,15 @@ function clearCanvas() {
 function colorChanger(color) {
     ctx.strokeStyle = color;
 }
+
+function updateCanvasSize(){
+    for (var i = 0; i < canvasList.length; i++){
+        var tempCTX = canvasList[i].getContext("2d");
+        var tempImgData = tempCTX.getImageData(0,0,window.innerWidth, window.innerHeight);
+        var t1 = canvasList[i].width;
+        var t2 = canvasList[i].height;
+        canvasList[i].width = window.innerWidth;
+        canvasList[i].height = window.innerHeight;
+        tempCTX.putImageData(tempImgData,0, 0,0,0,t1,t2);
+    }
+}

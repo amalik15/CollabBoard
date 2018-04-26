@@ -1,0 +1,30 @@
+<!--https://www.youtube.com/watch?v=1D23KgRiHRg-->
+<!DOCTYPE html>
+<?php
+//get username
+$user = $_GET['u'];
+?>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="s.css">
+        <link href = 'http://fonts.googlepis.com/css?family=Open+Sans:400,300,600,700,800' rel = 'stylesheet' type = 'text/css'>
+        <script src = 'http://code.jquery.com/jquery-1.11.0.min.js'></script>
+    </head>
+    <body>
+        <div class = 'container'>
+            <div class = 'chatHeader'>
+                <h3>Welcome <?php echo ucwords($user); ?> </h3>
+            </div>
+            <div class = 'chatMessages'></div>
+            <div class = 'chatBottom'>
+                <form action = '#' onSubmit = 'return false;' id = 'chatForm'>
+                    <input type = 'hidden' id = 'name' value = '<?php echo $user; ?>'/>
+                    <input type = 'text' name = 'text' id = 'text' value = '' placeholder = 'type your message here'/>
+                    <input type = 'submit' name = 'submit' value ='post'/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+   

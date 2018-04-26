@@ -9,6 +9,11 @@ A collaborative design software used for quick sketching and sharing of design
 ideas. CollabBoard is being developed as a UI Design project for CS422 at at the 
 University of Illinois at Chicago.
 */
+/*canvas stuff*/
+.canvas{
+  width: 100%;
+  height: 100%;
+}
 
 
 /* The Modal (background) */
