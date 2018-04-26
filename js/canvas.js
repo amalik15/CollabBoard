@@ -143,6 +143,6 @@ function colorChanger(color) {
 function moveCanvases(orderList){
     var len = orderList.length;
     for(var i = 0; i < len; i++){
-        canvasList[Number(orderList[i].value)].style.zIndex = len-i; 
+        canvasList[Number(orderList[i].value)].style.zIndex = i; 
     }
 }
