@@ -122,7 +122,7 @@ li > ul{display:none;}
   position: absolute;
   width: 10%;
   height: 40%;
-  bottom: 4%;
+  bottom: 42%;
 
 }
 
@@ -136,8 +136,6 @@ li > ul{display:none;}
   width:45%;
   height:10%;
   text-align: center;
-  position: fixed;
-  margin-top: 0px;
 }
 
 #button1{
