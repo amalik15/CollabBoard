@@ -115,15 +115,15 @@ li > ul{display:none;}
     
      position: absolute;
      z-index: -1; 
-   
     
 }
 
 #layerBoxDiv { 
   position: absolute;
-  width: 8%;
-  height: 20%;
-  bottom: 0;
+  width: 10%;
+  height: 40%;
+  bottom: 4%;
+
 }
 
 #items{
@@ -133,12 +133,13 @@ li > ul{display:none;}
     z-index: 999;
 }
 .layerBoxButtons button{
-  width:30%;
-  height:30%;
+  width:45%;
+  height:10%;
   text-align: center;
   position: fixed;
-  top:0px;
+  margin-top: 0px;
 }
+
 #button1{
     position: relative;
     top:250px;
