@@ -5,6 +5,9 @@ var baseCanvas = canvasList[0];
 baseCanvas.width = window.innerWidth;
 baseCanvas.height = window.innerHeight;
 
+var imageLoader = document.getElementById('imageLoader');
+imageLoader.addEventListener('change', handleImage, false);
+
 var ctx = baseCanvas.getContext('2d');
 ctx.strokeStyle = '#000000';
 ctx.lineJoin = 'round';
@@ -36,6 +39,36 @@ function addListener(myCanvas){
     });
     myCanvas.addEventListener('mouseup', () => isDrawing = false);
     myCanvas.addEventListener('mouseout', () => isDrawing = false);
+}
+
+function handleImage(e){
+	  var ctx = baseCanvas.getContext('2d');
+		
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+				
+        img.onload = function(){
+						if (img.width < baseCanvas.width && img.height < baseCanvas.height){
+							ctx.drawImage(img,0,0);
+						}
+						else{
+							var hor = img.width / baseCanvas.width;
+							var vert = img.height / baseCanvas.height;
+							
+							if (hor > vert){
+									ctx.drawImage(img,0,0, img.width, img.height,
+																								0,0, baseCanvas.width, img.height/hor);
+							}
+							else{
+									ctx.drawImage(img,0,0, img.width, img.height,
+																	0,0, img.width/vert, baseCanvas.height);
+							}
+						}
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
 }
 
 //get refrance to textfild

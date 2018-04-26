@@ -212,6 +212,11 @@ $(document).on("mousemove", "#colorCanvas", function(evt){
 		updateColor();
 });
 
+$(document).on("mousedown", "#import", function(evt){
+	imageLoader.click();
+});
+
+
 $(document).on("mousedown", "#colorCanvas", function(evt){
 		mouseDown = true;
 });
