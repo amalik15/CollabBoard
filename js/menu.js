@@ -74,6 +74,11 @@ $(document).on("mousemove", "#colorCanvas", function(evt){
 		
 });
 
+$(document).on("mousedown", "#import", function(evt){
+	imageLoader.click();
+});
+
+
 $(document).on("mousedown", "#colorCanvas", function(evt){
 		var colorCanvas = document.getElementById("colorCanvas");
     var rect = colorCanvas.getBoundingClientRect();
