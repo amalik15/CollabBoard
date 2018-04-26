@@ -155,7 +155,7 @@ $(document).on("mousemove", "#brightBar", function(evt){
     var rect = brightCanvas.getBoundingClientRect();
 		var y = evt.clientY - rect.left;
 		
-		brightness = y/2+75;
+		brightness = y/2+65;
 		updateColor();
 });
 
