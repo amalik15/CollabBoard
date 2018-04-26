@@ -132,8 +132,6 @@ function clearCanvas() {
     ctx.clearRect(0, 0, baseCanvas.width, baseCanvas.height);
 }
 
-
-
 //change painting color
 function colorChanger(color) {
     ctx.strokeStyle = color;
