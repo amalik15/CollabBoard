@@ -3,6 +3,7 @@ function boxMove(listItem,direction){
     
     var index=box.selectedIndex;
     
+    
     if(index==-1){
         alert("Select to move up");
         
@@ -27,13 +28,15 @@ function boxMove(listItem,direction){
     var value1=box.options[index].value;
     var text1=box.options[index].text;
 
+    /*
     var canvasIndex = Number(value1);
-
+    
     var canvas = canvasList[canvasIndex];
     var canvasPlusIncrement = canvasList[canvasIndex+increment];
 
     canvas.style.zIndex = canvasIndex+increment;
     canvasPlusIncrement.style.zIndex = canvasIndex;
+    */
 
     box.options[index].value=box.options[index+increment].value;
     box.options[index].text=box.options[index+increment].text;
@@ -41,5 +44,10 @@ function boxMove(listItem,direction){
     box.options[index+increment].value=value1;
     box.options[index+increment].text=text1;
 
-    box.selectedIndex=index+increment;   
+    box.selectedIndex=index+increment;
+
+    moveCanvases(box.options);
+
+    console.log(box.options);
+      
 }

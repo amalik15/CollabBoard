@@ -105,11 +105,14 @@ function addLayer() {
     var listBox = document.getElementById("items");
     var newLayerListBoxItem = document.createElement("option");
     newLayerListBoxItem.text = newCanvas.id;
+    console.log(newCanvas.id);
     newLayerListBoxItem.value = canvasList.length.toString();
     listBox.add(newLayerListBoxItem);
     canvasContainer.appendChild(newCanvas);
     canvasList = canvasContainer.getElementsByClassName('canvas');
     addListener(canvasList[canvasList.length - 1]);
+    moveCanvases(document.getElementById("items").options);
+
 }
 //function to draw on canvas
 function draw(e) {
@@ -135,4 +138,11 @@ function clearCanvas() {
 //change painting color
 function colorChanger(color) {
     ctx.strokeStyle = color;
+}
+
+function moveCanvases(orderList){
+    var len = orderList.length;
+    for(var i = 0; i < len; i++){
+        canvasList[Number(orderList[i].value)].style.zIndex = len-i; 
+    }
 }
