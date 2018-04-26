@@ -1,6 +1,3 @@
-
-
-
 function boxMove(listItem,direction){
     var box=document.getElementById(listItem);
     

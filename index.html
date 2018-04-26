@@ -173,7 +173,7 @@ University of Illinois at Chicago.
     <button id='+B' type="button" onclick=plus()>+</button>
     <button id='-B' type="button" onclick=minus()>-</button>
     <button id='clearB' type="button" onclick=clearCanvas()>clear</button>
-    <input id='canvasLayerNumber' type="text" size="1" onchange=layerNumber()>
+    <input id='canvasLayerNumber' type="text" size="1" onchange=layerNumberFromBox()>
     <button id='addLayer' type="button" onclick=addLayer()>AddLayer</button>
     <div id='canvasIndicator' style="float:right;">
     </div>
@@ -187,14 +187,16 @@ University of Illinois at Chicago.
    
    
    
-<select class="sortItems" id="items" size="15" multiple="" Property="Canvas.Top" style="drawingCanvas.Top" >
+<select class="sortItems" id="items" size="15" multiple="" Property="Canvas.Top" style="drawingCanvas.Top" onchange=layerNumberFromList() >
+    <option value="0">baseLayer</option>
+    <!--
     <option value="1">layer1</option>
     <option value="2">layer2</option>
     <option value="3">layer3</option>
     <option value="4">layer4</option>
     <option value="5">layer5</option>
     <option value="6">layer6</option>
-    
+    -->
 </select>
 <br>
 

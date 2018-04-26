@@ -1,7 +1,6 @@
 //set up the canvas
 var canvasContainer = document.querySelector('#canvasList');
 var canvasList = canvasContainer.getElementsByClassName('canvas');
-//var baseCanvas = document.querySelector('#baseCanvas');
 var baseCanvas = canvasList[0];
 baseCanvas.width = window.innerWidth;
 baseCanvas.height = window.innerHeight;
@@ -24,18 +23,9 @@ var layerNum = 0;
 var layerField = document.getElementById("canvasLayerNumber");
 layerField.value = 0;
 
-showLayer();
+document.getElementById("items").selectedIndex = 0;
 
 //mouse events
-/*
-baseCanvas.addEventListener('mousemove', draw);
-baseCanvas.addEventListener('mousedown', (e) => {
-    isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-});
-baseCanvas.addEventListener('mouseup', () => isDrawing = false);
-baseCanvas.addEventListener('mouseout', () => isDrawing = false);
-*/
 addListener(baseCanvas);
 
 function addListener(myCanvas){
@@ -78,28 +68,26 @@ function lineTextFieldEditor() {
     ctx.lineWidth = num;
 }
 
-function layerNumber() {
+function layerNumberFromBox() {
     let num = Number(layerField.value);
     if(isNaN(num) || num < 0) {
         return;
     }
+    document.getElementById("items").selectedIndex = num;
     layerNum = num;
     ctx = canvasList[layerNum].getContext('2d');
     lineTextField.value = ctx.lineWidth;
-    showLayer();
 }
 
-function showLayer() {
-    var div = document.getElementById('canvasIndicator');
-    div.innerHTML = "";
-    for(var i = 0; i < canvasList.length; i++)
-    {
-        if(i == layerField.value)
-        {
-            div.innerHTML += "*";
-        }
-        div.innerHTML += i.toString() + " ";
+function layerNumberFromList() {
+    let num = Number(document.getElementById("items").selectedIndex);
+    if(isNaN(num) || num < 0) {
+        return;
     }
+    layerField.value = num;
+    layerNum = num;
+    ctx = canvasList[layerNum].getContext('2d');
+    lineTextField.value = ctx.lineWidth;
 }
 
 function addLayer() {
@@ -114,10 +102,14 @@ function addLayer() {
     newCtx.strokeStyle = '#000000';
     newCtx.lineJoin = 'round';
     newCtx.lineCap = 'round';
+    var listBox = document.getElementById("items");
+    var newLayerListBoxItem = document.createElement("option");
+    newLayerListBoxItem.text = newCanvas.id;
+    newLayerListBoxItem.value = canvasList.length.toString();
+    listBox.add(newLayerListBoxItem);
     canvasContainer.appendChild(newCanvas);
     canvasList = canvasContainer.getElementsByClassName('canvas');
     addListener(canvasList[canvasList.length - 1]);
-    showLayer(); 
 }
 //function to draw on canvas
 function draw(e) {
